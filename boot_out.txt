@@ -1,0 +1,3 @@
+Adafruit CircuitPython 9.1.3 on 2024-08-29; Adafruit Feather M4 CAN with same51j19a
+Board ID:feather_m4_can
+UID:760896FD48364C5320202054112C0DFF
