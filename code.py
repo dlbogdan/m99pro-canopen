@@ -4,7 +4,7 @@ import board
 import digitalio
 import time
 
-## CircuitPython Script to talk to and eventually turn on SuperNova ebike headlight M99 PRO, OPENCan Variant
+## CircuitPython Script to talk to and eventually turn on SuperNova ebike headlight M99 PRO, CANOpen Variant
 ## Bogdan L. Dumitru
 ## 2024 Sept
 ## GPL License
