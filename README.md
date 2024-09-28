@@ -7,7 +7,7 @@ lamp: Supernova M99 Pro with Higo 6 pin cable connector.
 Test-run:
 
 
-AN Driver waking up from standby.
+CAN Driver waking up from standby.
 CAN power supply booster enabled.
 >Sent: COB_ID:0x66f len:4 data:[0x60 0x00 0x00 0x00 ] Func:getname1
 Bus state changed to canio.BusState.ACTIVE
