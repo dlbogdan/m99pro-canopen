@@ -39,7 +39,7 @@ def cmdf_highbeam(on:bool):
 def cmdf_setspeed(value:int):
     return ["SETSPEED",     cobid_sdo, [0x2f, 0x00, 0x22, 0x02, value, 0x00,  0, 0]]
 
-telegrams = [cmdf_drl(0)
+telegrams = [cmdf_drl(1),cmdf_lowbeam(1),cmdf_lowbeam(4),cmdf_lowbeam(LB_AUTO_CANSPD),cmdf_lowbeam(0),cmdf_drl(0)
              ]
 
 
