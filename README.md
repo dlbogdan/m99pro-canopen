@@ -26,8 +26,4 @@ long pressing the button will set the headlight on high beam
 
 the default state of the headlight is automatic (based on internal light sensor) low beam / DRL.
 
-## Future Plans
-
-The goal is to create a proper controller for the M99 Pro, tailored to my custom e-bike build. The current version can control the M99 Pro, but it's just a starting point.
-
 Feel free to modify and use it as you wish.
