@@ -3,8 +3,10 @@ import canio
 import board
 import digitalio
 import time
+from adafruit_debouncer import Debouncer
 
-## CircuitPython Script to talk to and eventually turn on SuperNova ebike headlight M99 PRO, CANOpen Variant
+
+## CircuitPython Script to control the SuperNova ebike headlight M99 PRO, CANOpen Variant
 ## Bogdan L. Dumitru
 ## 2024 Sept
 ## GPL License
@@ -38,9 +40,6 @@ def cmdf_highbeam(on:bool):
 
 def cmdf_setspeed(value:int):
     return ["SETSPEED",     cobid_sdo, [0x2f, 0x00, 0x22, 0x02, value, 0x00,  0, 0]]
-
-telegrams = [cmdf_drl(0)
-             ]
 
 
 
@@ -80,32 +79,64 @@ def init_canio() -> tuple:
         standby.switch_to_output(False)
         print("CAN Driver waking up from standby.")
 
-    # If the CAN transceiver is powered by a boost converter, turn on its supply
+    # If the CAN transceiver is powered by a boost converter, turn on its supply, for example on M4 CAN Express
     if hasattr(board, 'BOOST_ENABLE'):
         boost_enable = digitalio.DigitalInOut(board.BOOST_ENABLE)
         boost_enable.switch_to_output(True)
         print("CAN power supply booster enabled.")
 
     _can = canio.CAN(board.CAN_TX,board.CAN_RX, baudrate=500000,loopback=False,silent=False,auto_restart=True)
-    _listener = _can.listen(timeout=.1)
+    _listener = _can.listen(timeout=.01)
     return _can,_listener
 
+def init_switches(*args):
+    switches = []
+    for switch_boardid in args:
+        pin = digitalio.DigitalInOut(switch_boardid)
+        pin.direction=digitalio.Direction.INPUT
+        pin.pull = digitalio.Pull.UP
+        switch=Debouncer(pin)
+        switches.append(switch)
+    return switches[0] if len(switches) == 1 else switches  # if only one switch, return the switch directly, otherwise return a list
+
+
+def canopen_sendcmd(_can,telegram) -> None:
+    send_frame_canio(_can,telegram[0],telegram[1],bytes(telegram[2]))
 
 
 def main():
+    default_state = cmdf_lowbeam(LB_AUTO_INT_SPD)  # this will be the default state of the headlight 
     can,listener = init_canio()
+    canopen_sendcmd (can,default_state)
+    sw_hb = init_switches(board.D11)  # pin D11 for the button. 
+
     old_bus_state = None
     i=0
-
+    hb_active = False
     while True:
+        sw_hb.update()
+
+        if sw_hb.fell:  # short flash two times the highbeam
+            canopen_sendcmd(can,cmdf_highbeam(1))
+            time.sleep(0.02)
+            canopen_sendcmd(can,default_state)
+            time.sleep(0.02)
+            canopen_sendcmd(can,cmdf_highbeam(1))
+            time.sleep(0.02)
+            canopen_sendcmd(can,default_state)
+
+        if (not hb_active) and (not sw_hb.value) and (sw_hb.current_duration>0.5): #if the switch is kept pressed for longer than 0.5 seconds, then put highbeams on
+            canopen_sendcmd(can,cmdf_highbeam(1))
+            hb_active=True
+
+        if sw_hb.rose: # if the switch is released, set the default state of the headlight
+            canopen_sendcmd(can,default_state)
+            hb_active=False
+    
         message = listener.receive()
         if message is not None:
             parse_message_canio(message,received=True)
-        if (i < len(telegrams)):    
-            time.sleep(1)
-            send_frame_canio(can,telegrams[i][0],telegrams[i][1],bytes(telegrams[i][2]))
-            i=i+1
-
+  
         bus_state = can.state
         if bus_state != old_bus_state:
             print(f"Bus state changed to {bus_state}")
