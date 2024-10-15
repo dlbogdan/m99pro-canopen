@@ -1,37 +1,27 @@
-```
-Hardware used: 
-microcontroller board [Adafruit M4 CAN ](https://www.adafruit.com/product/4759), should also work with Adafruit STM32F4 board and a CAN Transceiver. 
-lamp: Supernova M99 Pro with Higo 6 pin cable connector.
+# CAN Controller for Supernova M99 Pro
 
+This project demonstrates how to control a Supernova M99 Pro lamp using a microcontroller board with CAN bus capabilities. It's a proof of concept for a custom e-bike build.
 
-Test-run:
+## Hardware Used
 
+- **Microcontroller Board:** [Adafruit M4 CAN Express](https://www.adafruit.com/product/4759)  
+  This setup should also work with the Adafruit STM32F4 board and a CAN Transceiver.
+- **Lamp:** Supernova M99 Pro with Higo 6-pin cable connector
 
-CAN Driver waking up from standby.
-CAN power supply booster enabled.
->Sent: COB_ID:0x66f len:4 data:[0x60 0x00 0x00 0x00 ] Func:getname1
-Bus state changed to canio.BusState.ACTIVE
-<Recv: COB_ID:0x5ef len:8 data:[0x00 0x53 0x55 0x50 0x45 0x52 0x4e 0x4f ] chars: [.SUPERNO]
->Sent: COB_ID:0x66f len:4 data:[0x70 0x00 0x00 0x00 ] Func:getname2
-<Recv: COB_ID:0x5ef len:8 data:[0x17 0x56 0x41 0x2d 0x4d 0x39 0x39 0x30 ] chars: [.VA-M990]
->Sent: COB_ID:0x66f len:8 data:[0x40 0x00 0x10 0x00 0x00 0x00 0x00 0x00 ] Func:getdevtype
-<Recv: COB_ID:0x5ef len:8 data:[0x43 0x00 0x10 0x00 0x4d 0x39 0x39 0x20 ] chars: [C...M99 ]
->Sent: COB_ID:0x66f len:8 data:[0x40 0x08 0x10 0x00 0x00 0x00 0x00 0x00 ] Func:getfwver
-<Recv: COB_ID:0x5ef len:8 data:[0x41 0x08 0x10 0x00 0x0e 0x00 0x00 0x00 ] chars: [A.......]
->Sent: COB_ID:0x0 len:2 data:[0x81 0x00 ] Func:nmtresetall
->Sent: COB_ID:0x0 len:2 data:[0x81 0x6f ] Func:nmtreset
->Sent: COB_ID:0x0 len:2 data:[0x80 0x00 ] Func:nmtpreopall
->Sent: COB_ID:0x0 len:2 data:[0x80 0x6f ] Func:nmtpreop
->Sent: COB_ID:0x0 len:2 data:[0x01 0x00 ] Func:nmtstartall
->Sent: COB_ID:0x0 len:2 data:[0x01 0x6f ] Func:nmtstart
->Sent: COB_ID:0x66f len:8 data:[0x40 0x00 0x22 0x00 0x00 0x00 0x00 0x00 ] Func:get0x2200
-<Recv: COB_ID:0x5ef len:8 data:[0x4f 0x00 0x22 0x00 0x06 0x00 0x00 0x00 ] chars: [O.".....]
->Sent: COB_ID:0x66f len:8 data:[0x2b 0x00 0x22 0x00 0x02 0x04 0x00 0x00 ] Func:lbon
-<Recv: COB_ID:0x5ef len:8 data:[0x80 0x00 0x22 0x00 0x00 0x00 0x00 0x08 ] chars: [..".....]
->Sent: COB_ID:0x66f len:8 data:[0x2b 0x00 0x22 0x00 0x03 0x00 0x00 0x00 ] Func:hbon
-<Recv: COB_ID:0x5ef len:8 data:[0x80 0x00 0x22 0x00 0x00 0x00 0x00 0x08 ] chars: [..".....]
->Sent: COB_ID:0x66f len:8 data:[0x2b 0x00 0x22 0x00 0x02 0x00 0x00 0x00 ] Func:lboff
-<Recv: COB_ID:0x5ef len:8 data:[0x80 0x00 0x22 0x00 0x00 0x00 0x00 0x08 ] chars: [..".....]
->Sent: COB_ID:0x66f len:8 data:[0x2b 0x00 0x22 0x00 0x03 0x00 0x00 0x00 ] Func:hboff
-<Recv: COB_ID:0x5ef len:8 data:[0x80 0x00 0x22 0x00 0x00 0x00 0x00 0x08 ] chars: [..".....]
-```
+## Getting Started
+
+To run this project, you'll need to:
+
+1. Flash your Adafruit M4 CAN Express board with CircuitPython.
+2. Transfer the provided code files to your board.
+3. Modify the script to suit your needs.
+
+### Test Script: `code.py`
+
+The `code.py` script serves as a proof of concept, enabling control of the M99 Pro (CANOpen variant). Eventually, this will evolve into a full-featured controller based on digital input buttons, custom-tailored for an e-bike.
+
+## Future Plans
+
+The goal is to create a proper controller for the M99 Pro, tailored to my custom e-bike build. The current version can control the M99 Pro, but it's just a starting point.
+
+Feel free to modify and use it as you wish.
