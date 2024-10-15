@@ -20,7 +20,7 @@ To run this project, you'll need to:
 
 The `code.py` script serves as a proof of concept, enabling control of the M99 Pro (CANOpen variant). 
 
-As it is, having a button wired between D12 and GND pins, will enable the following behaviours:
+As it is, having a button wired between D11 and GND pins, will enable the following behaviours:
 short pressing the button will strobe two short high beam flashes
 long pressing the button will set the headlight on high beam
 
