@@ -1,5 +1,4 @@
 
-
 import canio
 import board
 import digitalio
@@ -117,7 +116,7 @@ def main():
     while True:
         sw_hb.update()
 
-        if sw_hb.fell:  # short flash two times the highbeam
+        if (sw_hb.rose) and (not hb_active): # short flash two times the highbeam
             canopen_sendcmd(can,cmdf_highbeam(1))
             time.sleep(0.02)
             canopen_sendcmd(can,default_state)
@@ -130,7 +129,7 @@ def main():
             canopen_sendcmd(can,cmdf_highbeam(1))
             hb_active=True
 
-        if sw_hb.rose: # if the switch is released, set the default state of the headlight
+        if (sw_hb.rose) and (hb_active): # if the switch is released, set the default state of the headlight
             canopen_sendcmd(can,default_state)
             hb_active=False
     
