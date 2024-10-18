@@ -18,10 +18,12 @@ To run this project, you'll need to:
 
 ### Test Script: `code.py`
 
-The `code.py` script serves as a proof of concept, enabling control of the M99 Pro (CANOpen variant). Eventually, this will evolve into a full-featured controller based on digital input buttons, custom-tailored for an e-bike.
+The `code.py` script serves as a proof of concept, enabling control of the M99 Pro (CANOpen variant). 
 
-## Future Plans
+As it is, having a button wired between D11 and GND pins, will enable the following behaviours:
+short pressing the button will strobe two short high beam flashes
+long pressing the button will set the headlight on high beam
 
-The goal is to create a proper controller for the M99 Pro, tailored to my custom e-bike build. The current version can control the M99 Pro, but it's just a starting point.
+the default state of the headlight is automatic (based on internal light sensor) low beam / DRL.
 
 Feel free to modify and use it as you wish.
