@@ -5,7 +5,6 @@ import digitalio
 import time
 from adafruit_debouncer import Debouncer
 
-
 ## CircuitPython Script to control the SuperNova ebike headlight M99 PRO, CANOpen Variant
 ## Bogdan L. Dumitru
 ## 2024 Sept
@@ -85,7 +84,17 @@ def init_canio() -> tuple:
         boost_enable.switch_to_output(True)
         print("CAN power supply booster enabled.")
 
-    _can = canio.CAN(board.CAN_TX,board.CAN_RX, baudrate=500000,loopback=False,silent=False,auto_restart=True)
+    # Check for the existence of CAN_TX and CAN_RX on the board module
+    if not hasattr(board, 'CAN_TX') or not hasattr(board, 'CAN_RX'):
+        # Set default values if either CAN_TX or CAN_RX doesn't exist
+        # Replace 'default_tx_pin' and 'default_rx_pin' with actual pin defaults suitable for your board
+        CAN_TX = board.IO22
+        CAN_RX = board.IO19
+    else:
+        CAN_TX = board.CAN_TX
+        CAN_RX = board.CAN_RX
+    
+    _can = canio.CAN(CAN_TX,CAN_RX, baudrate=500000,loopback=False,silent=False,auto_restart=True)
     _listener = _can.listen(timeout=.01)
     return _can,_listener
 
@@ -105,10 +114,17 @@ def canopen_sendcmd(_can,telegram) -> None:
 
 
 def main():
+    if not hasattr(board, 'D12'):
+        # Set default values if either CAN_TX or CAN_RX doesn't exist
+        # Replace 'default_tx_pin' and 'default_rx_pin' with actual pin defaults suitable for your board
+        HB_pin=board.IO12
+    else:
+        HB_pin = board.D12
+    
     default_state = cmdf_lowbeam(LB_AUTO_INT_SPD)  # this will be the default state of the headlight 
     can,listener = init_canio()
     canopen_sendcmd (can,default_state)
-    sw_hb = init_switches(board.D11)  # pin D11 for the button. 
+    sw_hb = init_switches(HB_pin)  # pin 12 for the button. 
 
     old_bus_state = None
     i=0
