@@ -28,4 +28,4 @@ the default state of the headlight is automatic (based on internal light sensor)
 
 Feel free to modify and use it as you wish.
 Pinout for the HIGO6 female connector. 
-![alt text](https://github.com/dlbogdan/m99pro-canopen/issues/1#issue-2874746571)
+![screenshot](https://github.com/dlbogdan/m99pro-canopen/issues/1#issue-2874746571)
