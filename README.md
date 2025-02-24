@@ -27,3 +27,5 @@ long pressing the button will set the headlight on high beam
 the default state of the headlight is automatic (based on internal light sensor) low beam / DRL.
 
 Feel free to modify and use it as you wish.
+Pinout for the HIGO6 female connector. 
+![alt text](https://github.com/dlbogdan/m99pro-canopen/issues/1#issue-2874746571)
