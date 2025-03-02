@@ -31,7 +31,7 @@ Feel free to modify and use it as you wish.
 ### Pinout for the HIGO6 female connector. 
 ![HIGO6-M99Pro-Pinout](https://github.com/user-attachments/assets/12f19dba-23c4-421e-8e29-c8ea8a865909)
 
-### Wire colors for the commonly found HIGO cables (amazon/aliexpress) are as follows (please double check)
+### Wire colors for the commonly found HIGO cables (male connector) (amazon/aliexpress) are as follows (please double check)
 #### GND: GREEN
 #### VCC: BLUE
 #### CANH: BLACK
