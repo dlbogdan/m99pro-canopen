@@ -28,6 +28,9 @@ the default state of the headlight is automatic (based on internal light sensor)
 
 Feel free to modify and use it as you wish.
 
+### M99 Pro flyer-fit version:
+![Flyer-Fit-version](https://github.com/user-attachments/assets/50d45086-fc8f-4ae8-be47-c64ce66df06a)
+
 ### Pinout for the HIGO6 female connector. 
 ![HIGO6-M99Pro-Pinout](https://github.com/user-attachments/assets/12f19dba-23c4-421e-8e29-c8ea8a865909)
 
