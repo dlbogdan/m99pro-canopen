@@ -1,4 +1,4 @@
-# CAN Controller for Supernova M99 Pro
+# CAN Controller for Supernova M99 Pro Flyer-Fit
 
 This project demonstrates how to control a Supernova M99 Pro lamp using a microcontroller board with CAN bus capabilities. It's a proof of concept for a custom e-bike build.
 
@@ -6,7 +6,7 @@ This project demonstrates how to control a Supernova M99 Pro lamp using a microc
 
 - **Microcontroller Board:** [Adafruit M4 CAN Express](https://www.adafruit.com/product/4759)  
   This setup should also work with the Adafruit STM32F4 board and a CAN Transceiver.
-- **Lamp:** Supernova M99 Pro with Higo 6-pin cable connector
+- **Lamp:** Supernova M99 Pro with Higo 6-pin cable connector (Flyer-Fit version)
 
 ## Getting Started
 
