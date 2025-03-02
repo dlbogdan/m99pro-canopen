@@ -29,7 +29,7 @@ the default state of the headlight is automatic (based on internal light sensor)
 Feel free to modify and use it as you wish.
 
 ### Pinout for the HIGO6 female connector. 
-![screenshot](https://private-user-images.githubusercontent.com/18537423/416179349-9889eba5-5bd2-44e4-9aed-498e594ddfb8.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAzOTkyNTgsIm5iZiI6MTc0MDM5ODk1OCwicGF0aCI6Ii8xODUzNzQyMy80MTYxNzkzNDktOTg4OWViYTUtNWJkMi00NGU0LTlhZWQtNDk4ZTU5NGRkZmI4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjI0VDEyMDkxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdlOTBiYzVkOTc0ZWYyOGQ2MTcwZTMyODhiYjQxZjgwM2UwMzY3MjNkZDcxOTA2Njc2MzM4ZmIzMmI2ZTcxMjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.gu_XCU8vFmkCYNfL2CFXgJUraI6YeEk_Bl-NUX9_WHA)
+![HIGO6-M99Pro-Pinout](https://github.com/user-attachments/assets/12f19dba-23c4-421e-8e29-c8ea8a865909)
 
 ### Wire colors for the commonly found HIGO cables (amazon/aliexpress) are as follows (please double check)
 #### GND: GREEN
